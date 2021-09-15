@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2 class="text-center mt-0">제목 : {{post.title}}</h2>
+    <hr class="divider" />
+    <div class="text-center mt-0">
+    <p>작성 일자: {{ post.pub_date }}</p>
+    <p>글쓴이 : {{ post.writer }}</p>
+    <p>내용 : {{ post.content }}</p>
+    <button class="button" type="submit"><a href="{% url 'edit' post.id %}">수정하기</a></button>
+    <button class="button" type="submit"><a href="{% url 'delete' post.id %}">삭제하기</a></button>
+    <br><br>
+    <!-- 해시태그 불러오기 -->
+    {% for hashtags in post.hashtags.all %}
+        <span>{{ hashtags.name }}</span>
+    {% endfor %}
+    <br>
+    <!-- 댓글 불러오기 -->
+    {% for comment in post.comments.all %}
+        <p>{{ comment.text }}</p>
+    {% endfor %}
+
+    <br><br>
+    <form method="POST" action="{% url 'detail' post.id %}">
+        {% csrf_token %}
+        <p>{{ form.as_p }}</p>
+        <input type="submit" value="submit">
+    </form>
+    </div>
+{% endblock %}

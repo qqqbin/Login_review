@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+    <form method="post" action="{%url 'signup' %}">
+        {% csrf_token %} 
+        Username : 
+        <br>
+        <input name='username' type="text">
+        <br>
+        Password : 
+        <br>
+        <input name='password1' type="password">
+        <br>
+        Confirm Password : 
+        <br>
+        <input name='password2' type="password">
+        <br>
+        Nickname : 
+        <br>
+        <input name='nickname' type="nickname">
+        <br>
+        Email : 
+        <br>
+        <input name='email' type="email">
+        <br>
+        Phone Number : 
+        <br>
+        <input name='phonenum' type="phonenum">
+        <br>
+        <br>
+        <button type="submit">가입</button>
+    </form>
+{% endblock %} 

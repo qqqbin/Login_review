@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2 class="text-center mt-0">List</h2>
+    <hr class="divider" />
+
+    <h4>Hashtag 검색</h4>
+    <h6>Hashtag를 클릭하시면 해당 Hashtag가 포함된 글 목록을 보실 수 있습니다</h6>
+
+    {% for hashtag in hashtags.all %}
+    <a class="btn btn-primary" href="{% url 'search' hashtag.id %}">{{ hashtag.name }}</a>
+    {% endfor %}
+
+    <br><br>
+    {% for posts in posts.all %}
+    <p>제목 :<a href="{% url 'detail' posts.id %}">{{ posts.title }}</a></p>
+    <p>작성자 : {{ posts.writer }}</p>
+    <p>작성 일자 : {{ posts.pub_date }}</p>
+    <br>
+    {% endfor %}
+    </div></div>
+    
+
+    
+{% endblock %}

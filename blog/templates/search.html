@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2 class="text-center mt-0">{{ hashtag }} 해시태그가 있는 게시글 목록</h2>
+    <hr class="divider" />
+    
+    
+    {% for blog in hashtag.post_set.all %}
+    <p>제목 :<a href="{% url 'detail' blog.id %}">{{ blog.title }}</a></p>
+    <p>작성자 : {{ blog.writer }}</p>
+    <p>작성 일자 : {{ blog.pub_date }}</p>
+    <br>
+    {% endfor %}
+    </div></div>
+    
+{% endblock %}
